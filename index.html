@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Mind2Web Towards a Generalist Agent for the Web.">
+  <meta name="description" content="Mind2Web Towards a Generalist Agent for the Android.">
   <meta name="keywords" content="Natural Language Interface">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AutoWebGLM</title>
+  <title>A3Pipe</title>
 
   <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 
@@ -98,32 +98,14 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              AutoWebGLM: A Large Language Model-based Web Navigating Agent
+              A3Pipe: An Auto Android Agent Pipeline for Data Construction
             </h1>
             <!-- TODO -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                Hanyu Lai*,</span>
+                Hanyu Lai,</span>
               <span class="author-block">
-                Xiao Liu*,</span>
-              <span class="author-block">
-                Iat Long Iong*,</span>
-              <span class="author-block">
-                Shuntian Yao,</span>
-              <span class="author-block">
-                Yuxuan Chen,</span>
-              <span class="author-block">
-                Pengbo Shen,</span><br>
-              <span class="author-block">
-                Hao Yu,</span>
-              <span class="author-block">
-                Hanchen Zhang,</span>
-              <span class="author-block">
-                Xiaohan Zhang,</span>
-              <span class="author-block">
-                Yuxiao Dong,</span>
-              <span class="author-block">
-                Jie Tang,</span>
+                Junjie Gao,</span>
             </div>
 
             <!-- <div class="is-size-5 publication-authors">
@@ -180,26 +162,31 @@
         <div class="column highlight is-8 content">
           <span style="font-weight:bold">
             <!-- TODO -->
-            Recent advances in large language models (LLMs) have fueled
-            progress in numerous NLP tasks, notably intelligent agent tasks
-            such as web navigation—an area under active exploration. However,
-            language model-driven agents exhibit suboptimal performance in
-            real-world webpages due to three factors: (1) webpage complexity,
-            (2) HTML text exceeding model processing capacity, and (3) the
-            open-domain nature of the web. As a result, even the most advanced
-            agents falter in practical applications. We develop AutoWebGLM,
-            a language model-driven automated web navigation agent built
-            on the open ChatGLM3-6B model. Inspired by human browsing
-            patterns, we design an HTML simplification algorithm to represent
-            webpages, preserving vital information succinctly. We employ a hy-
-            brid human-AI method to build web browsing data for curriculum
-            training. Then, we bootstrap the model by reinforcement learning
-            and rejection sampling to further facilitate webpage comprehension,
-            browser operations, and efficient task decomposition by itself. Addi-
-            tionally, we establish a bilingual (Chinese and English) benchmark—
-            AutoWebBench—for real-world web browsing tasks. We evaluate
-            AutoWebGLM across diverse real-world web navigation bench-
-            marks, revealing its strong capabilities in the real environment.
+            Large Language Models (LLMs) have propelled numerous intelli-
+            gent agent tasks, particularly in the mobile device domain, offering
+            extensive room to operate. However, LLMs have yet to be widely
+            utilized to assist people in various tasks on the real mobile device.
+            One of the most significant challenges is the need for high-quality
+            data sources. Even state-of-the-art models fail to perform tasks due
+            to insufficient capabilities and the absence of robust data selection.
+            On the other hand, human annotation is often hindered by time
+            constraints, labor intensity, and inconsistencies arising from user
+            habits. In light of these challenges, we develop A3Pipe, a novel
+            auto Android agent pipeline, which includes an agent algorithm
+            comprising ExpSearch, Planning, and Auto-Check to enhance the
+            agent's capabilities and robustness. Furthermore, we introduce a
+            goal-conditioned evaluator for mobile devices, capable of assess-
+            ing the progress in task trajectories, useful for data selection and
+            augmentation. Our system achieves a 82.4% improvement on An-
+            droidWorld, significantly enhancing the efficiency of automatic
+            data collection. Additionally, we trained Llama-3-70B on trajecto-
+            ries selected by the goal-conditioned evaluator, resulting in a 222%
+            enhancement, demonstrating the effectiveness of our data selection
+            strategy. The data pipeline can fully automate the construction of
+            Android browsing data at a low cost and time investment, with
+            experiments indicating that its cost is only 5% compared to human
+            annotation and efficiency 5.85 times greater. Demonstrations of
+            A3Pipe can be found at .
           </span>
           <br>
         </div>
@@ -422,10 +409,14 @@
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
-          <img src="./static/images/framework.png" alt="Framework" style="width:100%">
-          As depicted in the above Figure, we process information through HTML simplification and OCR (Optical Character Recognition) modules, yielding a simplified HTML representation after acquiring HTML and webpage screenshots. With attributes facilitating operability judgment, we mark operable elements for agent interaction. The OCR module is for notating text elements during image parsing.
+          <img src="./static/images/main_00.png" alt="Framework" style="width:100%">
+          Our system comprises three components: preliminary, task execution, and update. 
           <br>
-          Agents initiate action prediction by combining this representation with other observational data. Upon outputting action, the automated web program is employed for action execution; this iterative cycle persists until task termination. AutoWebGLM enhances interactive capacity and webpage navigation precision by amalgamating these components into a singular framework.
+          Preliminary (a): We use dense retrieval to extract the top-1 similar tasks and trajectories from the database and feed them into the agent. 
+          <br>
+          Task Execution (b): The agent generates or maintains a plan and creates operational instructions based on the plan and given examples. The Auto Check module verifies these instructions, executing them if successful or regenerating them if not. 
+          <br>
+          Update (c): Our goal-conditioned evaluator assesses the recorded trajectories and updates the database accordingly.
         </md-block>
       </div>
     </div>
@@ -436,7 +427,7 @@
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
-          <img src="./static/images/data.png" alt="data" style="width:100%">
+          <img src="./static/images/data_collection_00.png" alt="data" style="width:100%">
           Considering the scarcity of high-quality, multi-step web browsing data produced by actual users, we aim to create a sizable dataset. However, the construction of this dataset presents several challenges:
           <br>
           <ul>
@@ -467,125 +458,124 @@
       <h2 class="title">Demonstration</h2>
       <div class="column">
         <div class="content">
-          <!-- Weather Report -->
-          <h3>Weather Report</h3>
-          <p>The targeted task to be executed is "What is the weather like today?". The actual execution steps can be summarized as follows:</p>
+          <!-- Audio Recorder -->
+          <h3>Audio Recorder</h3>
+          <p>The targeted task to be executed is "Record an audio clip using Audio Recorder app and save it". The actual execution steps can be summarized as follows:</p>
           <ul>
-            <li>Step1: Type SearchBar "todays weather report"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click SearchBar</li>
-            <li>Step4: Click DateButton</li>
-            <li>Step5: Answer</li>
+            <li>Step1: Click SearchBar</li>
+            <li>Step2: Type SearchBar "Audio Recorder"</li>
+            <li>Step3: Click "Audio Recorder"</li>
+            <li>Step4: Click "Start Recording"</li>
+            <li>Step5: Click "End Recording"</li>
+            <li>Step6: Save the file</li>
           </ul>
-          <p>As the following figure shows, we end up on the webpage with a local weather report. We obtained detailed information about today's weather as the answer, effectively completing the target task.</p>
-          <img src="./static/images/demo1.png" alt="Weather Report" width="95%">
+          <p>As the following figure shows, we end up on the screenshot with a recorded audio. We recorded a 12s audio recording, effectively completing the target task.</p>
+          <img src="./static/images/demo1.png" alt="Audio Recorder" width="95%">
     
-          <!-- Shopping Advice -->
-          <h3>Shopping Advice</h3>
-          <p>The targeted task to be executed is "Help me pick a Christmas gift for kids". The actual execution steps can be summarized as follows:</p>
+          <!-- Phone Contact -->
+          <h3>Phone Contact</h3>
+          <p>The targeted task to be executed is "Create a new contact for Hugo Pereira. Their number is +13920741751". The actual execution steps can be summarized as follows:</p>
           <ul>
-            <li>Step1: Type SearchBar "Christmas gift for kids"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click "All" tag in the category selection</li>
-            <li>Step4: Click SearchBar</li>
-            <li>Step5: Click The first product on the result page</li>
-            <li>Step6: Answer</li>
+            <li>Step1: Click "Phone" App</li>
+            <li>Step2: Click "Contacts"</li>
+            <li>Step3: Click “Add” button</li>
+            <li>Step4: Type contact information</li>
+            <li>Step5: Save the contact</li>
           </ul>
-          <p>As figure shows, we ultimately landed on a camera product page, where we obtained a recommendation for that camera as the answer, essentially completing the task.</p>
-          <img src="./static/images/demo2.png" alt="Shopping Advice" width="95%">
+          <p>As figure shows, we end up on the screenshot with a contact named Hugo Pereira. We add a contact with his name and phone number, effectively completing the target task.</p>
+          <img src="./static/images/demo2.png" alt="Phone Contact" width="95%">
     
-          <!-- Searching Article -->
-          <h3>Searching Article</h3>
-          <p>The targeted task to be executed is "Find an article about large language model". The actual execution steps can be summarized as follows:</p>
+          <!-- Delete File -->
+          <h3>Delete File</h3>
+          <p>The targeted task to be executed is "Delete the file banana.mp3 from the Android filesystem located in the Notifications folder within the sdkgphone storage area". The actual execution steps can be summarized as follows:</p>
           <ul>
-            <li>Step1: Type SearchBar "large language model"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click Wiki</li>
-            <li>Step4: Scroll down</li>
-            <li>Step5: Go backward</li>
-            <li>Step6: Scroll down</li>
-            <li>Step7: Click The link to an article</li>
-            <li>Step8: Answer</li>
+            <li>Step1: Open "Files" App</li> 
+            <li>Step2: Click "Show roots"</li> 
+            <li>Step3: Click "sdkgphone"</li> 
+            <li>Step4: Click "Notifications"</li> 
+            <li>Step5: Scroll Down</li> 
+            <li>Step6: Long Press "banana.mp3"</li> 
+            <li>Step7: Click "Delete"</li> 
+            <li>Step8: Click "OK"</li> 
           </ul>
-          <p>As the following figure shows, we ultimately arrived at a page featuring an article and obtained "Found a relevant article" as the answer, essentially fulfilling the task.</p>
-          <img src="./static/images/demo3.png" alt="Searching Article" width="95%">
+          <p>As the following figure shows, we end up on the screenshot in the Notifications folder. We delete the file banana.mp3, effectively completing the target task.</p>
+          <img src="./static/images/demo3.png" alt="Delete File" width="95%">
     
-          <!-- Searching Tools -->
-          <h3>Searching Tools</h3>
-          <p>The targeted task to be executed is "Find a tool to solve the differential equation". The actual execution steps can be summarized as follows:</p>
+          <!-- Marking Map -->
+          <h3>Marking Map</h3>
+          <p>The targeted task to be executed is "Add a favorite location marker for 47.1303814, 9.5930117 in the OsmAnd maps app". The actual execution steps can be summarized as follows:</p>
           <ul>
-            <li>Step1: Type SearchBar "tools to solve the differential equation"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Scroll down</li>
-            <li>Step4: Click The link to an online tool</li>
-            <li>Step5: Click ODE calculator</li>
-            <li>Step6: Answer</li>
+            <li>Step1: Open app "OsmAnd" App</li>
+            <li>Step2: Click "Search" button</li>
+            <li>Step3: Type "47.1303814, 9.5930117"</li>
+            <li>Step4: Click "Show on map"</li>
+            <li>Step5: Long Press</li>
+            <li>Step6: Click "Add" button</li>
+            <li>Step7: Click "Add Favorite" button</li>
+            <li>Step8: Click "Save" button</li>
           </ul>
-          <p>As the following figure shows, we ultimately arrived at a page for an ODE (Ordinary Differential Equation) calculator and obtained "Found a relevant tool" as the answer, essentially completing the task.</p>
-          <img src="./static/images/demo4.png" alt="Searching tools" width="95%">
+          <p>As the following figure shows, we end up on the OsmAnd maps app with a location marker. We add a favorite location marker, effectively completing the target task.</p>
+          <img src="./static/images/demo4.png" alt="Marking Map" width="95%">
+
+          <!-- Create Music Playlist -->
+          <h3>Create Music Playlist</h3>
+          <p>The targeted task to be executed is "Create a playlist in Retro Music titled 'Hip Hop Bangers 270' with the following songs, in order: Golden Days". The actual execution steps can be summarized as follows:</p>
+          <ul>
+                    <li>Step1: Open app "Retro Music" App</li>
+                    <li>Step2: Click "Playlist"</li>
+                    <li>Step3: Click "More Options"</li>
+                    <li>Step4: Click "New Playlist"</li>
+                    <li>Step5: Type "Hip Hop Bangers 270"</li>
+                    <li>Step6: Click "Create"</li>
+                    <li>Step7: Click "Songs"</li>
+                    <li>Step8: Long Press "Golden Days"</li>
+                    <li>Step9: Click "Add to playlist"</li>
+                    <li>Step10: Click "Hip Hop Bangers 270"</li>
+          </ul>
+          <p>As the following figure shows, we end up on the "Retro Music" playlist. We add "Golden Days" into the playlist, effectively completing the target task.</p>
+          <img src="./static/images/demo5.png" alt="Create Music Playlist" width="95%">
+
+          <!-- Turn Bluetooth Off -->
+          <h3>Turn Bluetooth Off</h3>
+          <p>The targeted task to be executed is "Turn Bluetooth off". The actual execution steps can be summarized as follows:</p>
+          <ul>
+                    <li>Step1: Open "Settings" App</li>
+                    <li>Step2: Click "Connected devices"</li>
+                    <li>Step3: Click "Connection preferences"</li>
+                    <li>Step4: Click "Bluetooth"</li>
+                    <li>Step5: Click "Bluetooth switch"</li>
+          </ul>
+          <p>As the following figure shows, we end up on the screenshot with the Bluetooth. We turn Bluetooth off, effectively completing the target task.</p>
+          <img src="./static/images/demo6.png" alt="Turn Bluetooth Off" width="95%">
+
+          <!-- Play Music Playlist -->
+          <h3>Play Music Playlist</h3>
+          <p>The targeted task to be executed is "Search for the artist Eric Clapton, enter his artist page, and play his playlist". The actual execution steps can be summarized as follows:</p>
+          <ul>
+                    <li>Step1: Open "Spotify" App</li>
+                    <li>Step2: Click "Search"</li>
+                    <li>Step3: Click SearchBar</li>
+                    <li>Step4: Type "Eric Clapton"</li>
+                    <li>Step5: Click "Play"</li>
+          </ul>
+          <p>As the following figure shows, we end up on the screenshot with the playlist. We play the Eric Clapton's playlist, effectively completing the target task.</p>
+          <img src="./static/images/demo7.png" alt="Play Music Playlist" width="95%">
+
+          <!-- Join a community -->
+          <h3>Join a community</h3>
+          <p>The targeted task to be executed is "Enter a community page and ask to join". The actual execution steps can be summarized as follows:</p>
+          <ul>
+                    <li>Step1: Open "Twitter" App</li>
+                    <li>Step2: Click "communities"</li>
+                    <li>Step3: Click a community</li>
+                    <li>Step4: Click "Join"</li>
+                    <li>Step5: Click "Agree and join"</li>
+          </ul>
+          <p>As the following figure shows, we end up on the screenshot with a community. We join the large language model community, effectively completing the target task.</p>
+          <img src="./static/images/demo8.png" alt="Join a community" width="95%">          
     
-          <!-- Knowledge Query -->
-          <h3>Knowledge Query</h3>
-          <p>The targeted task to be executed is "Search and tell me some basic info about the dark matter". The actual execution steps can be summarized as follows:</p>
-          <ul>
-            <li>Step1: Type SearchBar "dark matter"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click Wiki</li>
-            <li>Step4: Scroll down</li>
-            <li>Step5: Answer</li>
-          </ul>
-          <p>As the following figure shows, we ultimately reached a wiki page about dark matter, obtaining some basic info as the answer, and effectively completing the task.</p>
-          <img src="./static/images/demo5.png" alt="Knowledge Query" width="95%">
-    
-          <!-- Finding Pictures -->
-          <h3>Finding Pictures</h3>
-          <p>The targeted task to be executed is "Help find a beautiful picture of the Pacific Ocean". The actual execution steps can be summarized as follows:</p>
-          <ul>
-            <li>Step1: Type SearchBar "Pacific Ocean Pictures"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click A picture in the search result</li>
-            <li>Step4: Go backward</li>
-            <li>Step5: Click Another in the search result</li>
-            <li>Step6: Answer</li>
-          </ul>
-          <p>As the following picture shows, we ultimately reached a page displaying an image of the Pacific Ocean, obtaining "Found a picture of the Pacific Ocean for you" as the answer, effectively completing the task.</p>
-          <img src="./static/images/demo13.png" alt="Finding Pictures" width="95%">
-    
-          <!-- Finding Research -->
-          <h3>Finding Research</h3>
-          <p>The targeted task to be executed is "Search and tell me a hot area in AI research". The actual execution steps can be summarized as follows:</p>
-          <ul>
-            <li>Step1: Type SearchBar "areas in AI research"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click A Link to a page</li>
-            <li>Step4: Scroll down</li>
-            <li>Step5: Answer</li>
-          </ul>
-          <p>As shown in the figure, we ultimately reached a page about AI research, obtaining "Natural Language Processing(NLP)" as the answer, effectively completing the task.</p>
-          <img src="./static/images/demo6.png" alt="Finding Research" width="95%">
-    
-          <!-- Game Recommendation -->
-          <h3>Game Recommendation</h3>
-          <p>The targeted task to be executed is "I want to play a PC game. Help me choose one". The actual execution steps can be summarized as follows:</p>
-          <ul>
-            <li>Step1: Type SearchBar "PC game recommendations"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Answer</li>
-          </ul>
-          <p>As shown in the figure, we ultimately reached a page of searching results of games, obtaining a recommendation as the answer, effectively completing the task.</p>
-          <img src="./static/images/demo7.png" alt="Game Recommendation" width="95%">
-    
-          <!-- Playing Video -->
-          <h3>Playing Video</h3>
-          <p>The targeted task to be executed is "Search and tell me a hot area in AI research". The actual execution steps can be summarized as follows:</p>
-          <ul>
-            <li>Step1: Type SearchBar "funny videos"</li>
-            <li>Step2: Click SearchButton</li>
-            <li>Step3: Click A Link to a video</li>
-            <li>Step4: Answer</li>
-          </ul>
-          <p>As shown in the figure, we ultimately reached a page playing a funny video, effectively completing the task.</p>
-          <img src="./static/images/demo8.png" alt="Playing Video" width="95%">
+
+
         </div>
       </div>
     </div>
