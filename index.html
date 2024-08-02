@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Mind2Web Towards a Generalist Agent for the Web.">
+  <meta name="keywords" content="Natural Language Interface">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AutoWebGLM</title>
+
+  <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+  <!-- Load plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Color palette -->
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3plus-text@1"></script>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZNP3SCQ1V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-MZNP3SCQ1V');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <!-- TODO -->
+        <a class="navbar-item" href="https://github.com">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://arxiv.org/abs/2201.10608">
+              DOM-LM
+            </a>
+            <a class="navbar-item" href="https://github.com/dki-lab/Pangu/">
+              Pangu
+            </a>
+            <a class="navbar-item" href="https://osu-nlp-group.github.io/MagicBrush/">
+              MagicBrush
+            </a>
+            <a class="navbar-item" href="https://dki-lab.github.io/LLM-Planner/">
+              LLM-Planner
+            </a>
+          </div>
+        </div> -->
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              AutoWebGLM: A Large Language Model-based Web Navigating Agent
+            </h1>
+            <!-- TODO -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Hanyu Lai*,</span>
+              <span class="author-block">
+                Xiao Liu*,</span>
+              <span class="author-block">
+                Iat Long Iong*,</span>
+              <span class="author-block">
+                Shuntian Yao,</span>
+              <span class="author-block">
+                Yuxuan Chen,</span>
+              <span class="author-block">
+                Pengbo Shen,</span><br>
+              <span class="author-block">
+                Hao Yu,</span>
+              <span class="author-block">
+                Hanchen Zhang,</span>
+              <span class="author-block">
+                Xiaohan Zhang,</span>
+              <span class="author-block">
+                Yuxiao Dong,</span>
+              <span class="author-block">
+                Jie Tang,</span>
+            </div>
+
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block">Tsinghua University</span>
+            </div>
+            <i style="font-size: 15px !important;">*Corresponding Authors.</i> -->
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!--<span class="link-block">
+                  <a href="https://arxiv.org/pdf/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>-->
+                <!--<span class="link-block">
+                  <a href="https://www.youtube.com/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>-->
+                <span class="link-block">
+                  <!-- TODO -->
+                  <a href="https://drive.usercontent.google.com/u/0/uc?id=1pfB66lUN3PnVncbcxuoBiHVr2aQwr4qd&export=download"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                  <a href="https://github.com/THUDM/AutoWebGLM/"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-code"></i>
+                    </span>
+                    <span>Source Code</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column highlight is-8 content">
+          <span style="font-weight:bold">
+            <!-- TODO -->
+            Recent advances in large language models (LLMs) have fueled
+            progress in numerous NLP tasks, notably intelligent agent tasks
+            such as web navigation—an area under active exploration. However,
+            language model-driven agents exhibit suboptimal performance in
+            real-world webpages due to three factors: (1) webpage complexity,
+            (2) HTML text exceeding model processing capacity, and (3) the
+            open-domain nature of the web. As a result, even the most advanced
+            agents falter in practical applications. We develop AutoWebGLM,
+            a language model-driven automated web navigation agent built
+            on the open ChatGLM3-6B model. Inspired by human browsing
+            patterns, we design an HTML simplification algorithm to represent
+            webpages, preserving vital information succinctly. We employ a hy-
+            brid human-AI method to build web browsing data for curriculum
+            training. Then, we bootstrap the model by reinforcement learning
+            and rejection sampling to further facilitate webpage comprehension,
+            browser operations, and efficient task decomposition by itself. Addi-
+            tionally, we establish a bilingual (Chinese and English) benchmark—
+            AutoWebBench—for real-world web browsing tasks. We evaluate
+            AutoWebGLM across diverse real-world web navigation bench-
+            marks, revealing its strong capabilities in the real environment.
+          </span>
+          <br>
+        </div>
+      </div>
+
+      <!-- TODO -->
+      <div class="column is-full-width" id="teaserVideos">
+        <div class="columns is-centered is-variable is-0 is-full-width">
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(a) Ask for detailed weather report.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(b) Ask for game recommandation.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(c) Search for an article about LLM.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo3.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="columns is-centered is-variable is-0">
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(d) Find a tool to solve differential equation.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo4.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(e) Help choose a Christmas gift for kids.</a>.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(f) Learn about AI research.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo6.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="columns is-centered is-variable is-0">
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(g) Learn about dog breed.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo7.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(h) Learn about latest news.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo8.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(i) Find picture of the Pacific Ocean.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo9.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="columns is-centered is-variable is-0 is-full-width">
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(j) Online Shopping Assistance with Pop-Up Interruption.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo-f2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(k) Knowledge Query with Hallucination.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo-f1.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(l) Map Query with Poor Graphical Recognition.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo-f4.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <!-- <div class="columns is-centered is-variable is-0">
+          
+          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+            <div class="overlay">
+              <p>(j) Learn about dark matter.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo10.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div> -->
+      </div>
+      <script>
+        var video = document.getElementById("teaserVideos").getElementsByClassName("video");
+        for (var i = 0; i < video.length; i++) {
+          video[i].playbackRate = 0.5;
+          video[i].play();
+        }
+      </script>
+  </section>
+
+
+  <!-- <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <md-block>
+              Recent advances in large language models (LLMs) have fueled
+              progress in numerous NLP tasks, notably intelligent agent tasks
+              such as web navigation—an area under active exploration. However,
+              language model-driven agents exhibit suboptimal performance in
+              real-world webpages due to three factors: (1) webpage complexity,
+              (2) HTML text exceeding model processing capacity, and (3) the
+              open-domain nature of the web. As a result, even the most advanced
+              agents falter in practical applications. We develop AutoWebGLM,
+              a language model-driven automated web navigation agent built
+              on the open ChatGLM3-6B model. Inspired by human browsing
+              patterns, we design an HTML simplification algorithm to represent
+              webpages, preserving vital information succinctly. We employ a hy-
+              brid human-AI method to build web browsing data for curriculum
+              training. Then, we bootstrap the model by reinforcement learning
+              and rejection sampling to further facilitate webpage comprehension,
+              browser operations, and efficient task decomposition by itself. Addi-
+              tionally, we establish a bilingual (Chinese and English) benchmark—
+              AutoWebBench—for real-world web browsing tasks. We evaluate
+              AutoWebGLM across diverse real-world web navigation bench-
+              marks, revealing its strong capabilities in the real environment.
+              Demonstrations with the Chrome extension of AutoWebGLM can
+              be found at <a href="https://nuc-fusion.github.io/AutoWebGLM/">https://nuc-fusion.github.io/AutoWebGLM/</a>.
+            </md-block>
+          </div>
+          <br>
+          <div class="content has-text-justified">
+            <md-block>
+              *Updates*
+              - 2023-8-6: We have updated the [GitHub Repo](https://github.com/OSU-NLP-Group/Mind2Web) with fine-tuning
+              code/models for MindAct.
+              - 2023-7-3: We have released the raw dump with the trace file, network traffic, screenshots and other
+              files. Please check out the
+              [data](https://app.globus.org/file-manager?origin_id=32e6b738-a0b0-47f8-b475-26bf1c5ebf19) and the [GitHub
+              Repo](https://github.com/OSU-NLP-Group/Mind2Web) for more details.
+              - 2023-6-13: We have released the training/test data and codebase for the paper. Please check out our
+              [GitHub Repo](https://github.com/OSU-NLP-Group/Mind2Web). 
+            </md-block>
+          </div>
+        </div>
+      </div>
+  </section> -->
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="column is-full-width">
+        <!-- TODO -->
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content">
+          <p>
+            The concept of autonomous digital agents as helpful assistants is an enticing prospect. Enhanced by LLMs' formidable comprehension and response capabilities, we can envision various scenarios unimaginable before. For instance, an LLM-based agent could support a daily routine that summarizes the online news for us during breakfast. This integration of LLMs into everyday tasks heralds a significant shift in how we interact with technology, optimizing our efficiency and redefining the boundaries of machine-assisted productivity.
+          </p>
+          <p>
+            Tremendous efforts have been underway to construct auto web agents. One is AutoGPT, a popular open-source project that utilizes ChatGPT to integrate LLMs with predetermined tools such as web and local file browsing. Meanwhile, the development of agent-centric LLMs has gained significant momentum. Nevertheless, the majority of existing web agents are to date severely restricted in terms of practical applications, predominantly due to the following challenges:
+          </p>
+          <ul>
+            <li>A universal action space covering all necessary task executions across various websites is absent.</li>
+            <li>The diversity and complexity of webpages and their tendentious verbosity pose a significant challenge for LLMs to comprehend the content and carry out correct operations accurately.</li>
+            <li>Existing agents notably lack the capability for correct inference and self-checking on web tasks. Once caught in an erroneous loop, they struggle to rectify the issue promptly.</li>
+          </ul>
+          <p>
+            In this work, we introduce a deployable webpage browsing agent based on the open ChatGLM3-6B model. We propose various efficient data strategies to support the swift construction of a sizeable, reliable training dataset while state-of-the-art models cannot reliably complete data annotation tasks. Furthermore, by leveraging supervised and reinforcement learning methods, we train our model on top of the collected web agent dataset to achieve performance superiority on general webpage browsing tasks. A step further, we employ rejection sampling finetuning (RFT) for lifelong learning in specific web environments, enabling the agent to become an expert in a particular domain.
+          </p>
+          <p>
+            We develop a Chrome extension based on our model. Throughout our experiments, it can reason and perform operations on various websites to complete user tasks accurately, making it practically applicable to real-world services. In addition, we construct the first bilingual (English and Chinese) webpage browsing evaluation dataset, given that websites from different regions have substantial stylistic variations.
+          </p>
+          <p>
+            In conclusion, we make the following contributions in this paper:
+          </p>
+          <ul>
+            <li>We design and develop the our model agent for effectively completing web browsing tasks through curriculum learning, bootstrapped by self-sampling reinforcement learning, and RFT in the web browsing environment.</li>
+            <li>We construct a real webpage browsing operation dataset of approximately 10,000 traces using model-assisted and manual methods, including the bilingual (English and Chinese) web browsing benchmark.</li>
+            <li>We perform experiments to demonstrate that our model with 6B parameters achieves performance comparable to the most advanced LLM-based agents, and more importantly, it reaches a practically usable level for real-world web tasks.</li>
+          </ul>
+        </div>
+        <br>
+        <!-- TODO -->
+    <br>
+    <div class="container is-max-widescreen">
+      <h2 class="title">Framework</h2>
+      <div class="column">
+        <md-block class="content">
+          <!-- TODO -->
+          <img src="./static/images/framework.png" alt="Framework" style="width:100%">
+          As depicted in the above Figure, we process information through HTML simplification and OCR (Optical Character Recognition) modules, yielding a simplified HTML representation after acquiring HTML and webpage screenshots. With attributes facilitating operability judgment, we mark operable elements for agent interaction. The OCR module is for notating text elements during image parsing.
+          <br>
+          Agents initiate action prediction by combining this representation with other observational data. Upon outputting action, the automated web program is employed for action execution; this iterative cycle persists until task termination. AutoWebGLM enhances interactive capacity and webpage navigation precision by amalgamating these components into a singular framework.
+        </md-block>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-widescreen">
+      <h2 class="title">Data Preparation</h2>
+      <div class="column">
+        <md-block class="content">
+          <!-- TODO -->
+          <img src="./static/images/data.png" alt="data" style="width:100%">
+          Considering the scarcity of high-quality, multi-step web browsing data produced by actual users, we aim to create a sizable dataset. However, the construction of this dataset presents several challenges:
+          <br>
+          <ul>
+            <li>1. Task Collection: A significant hurdle is acquiring diverse, real-user task queries across various websites.</li>
+            <li>2. Privacy and Security: Privacy and security limitations hinder the direct acquisition of user browser operation sequences. It is also challenging to rule out redundant or incorrect operations not pertinent to task completion and to confirm user task completion.</li>
+            <li>3. Objective Annotation: The labor-intensive nature of collecting user objectives for each operational step makes it impractical in real-world data-gathering scenarios.</li>
+            <li>4. Model Limitations: Current models cannot process complex user queries across different websites, thus eliminating the chance of using purely automated methods for accurate browsing trajectory collection in real and complex application contexts.</li>
+          </ul>
+          <br>
+        As illustrated in the above Figure, we suggest a hybrid human-AI Dataset Construction method to create our training data in response to these challenges.Shown as the figure above.     
+      </md-block>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-widescreen">
+      <h2 class="title">Training</h2>
+      <div class="column">
+        <md-block class="content">
+          <!-- TODO -->
+          <img src="./static/images/training.png" alt="training" style="width:100%">
+          The above figure illustrates our training process. Details can be found in the paper.
+      </md-block>
+      </div>
+    </div>
+    <br>
+    <div class="container is-max-widescreen">
+      <h2 class="title">Demonstration</h2>
+      <div class="column">
+        <div class="content">
+          <!-- Weather Report -->
+          <h3>Weather Report</h3>
+          <p>The targeted task to be executed is "What is the weather like today?". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "todays weather report"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click SearchBar</li>
+            <li>Step4: Click DateButton</li>
+            <li>Step5: Answer</li>
+          </ul>
+          <p>As the following figure shows, we end up on the webpage with a local weather report. We obtained detailed information about today's weather as the answer, effectively completing the target task.</p>
+          <img src="./static/images/demo1.png" alt="Weather Report" width="95%">
+    
+          <!-- Shopping Advice -->
+          <h3>Shopping Advice</h3>
+          <p>The targeted task to be executed is "Help me pick a Christmas gift for kids". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "Christmas gift for kids"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click "All" tag in the category selection</li>
+            <li>Step4: Click SearchBar</li>
+            <li>Step5: Click The first product on the result page</li>
+            <li>Step6: Answer</li>
+          </ul>
+          <p>As figure shows, we ultimately landed on a camera product page, where we obtained a recommendation for that camera as the answer, essentially completing the task.</p>
+          <img src="./static/images/demo2.png" alt="Shopping Advice" width="95%">
+    
+          <!-- Searching Article -->
+          <h3>Searching Article</h3>
+          <p>The targeted task to be executed is "Find an article about large language model". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "large language model"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click Wiki</li>
+            <li>Step4: Scroll down</li>
+            <li>Step5: Go backward</li>
+            <li>Step6: Scroll down</li>
+            <li>Step7: Click The link to an article</li>
+            <li>Step8: Answer</li>
+          </ul>
+          <p>As the following figure shows, we ultimately arrived at a page featuring an article and obtained "Found a relevant article" as the answer, essentially fulfilling the task.</p>
+          <img src="./static/images/demo3.png" alt="Searching Article" width="95%">
+    
+          <!-- Searching Tools -->
+          <h3>Searching Tools</h3>
+          <p>The targeted task to be executed is "Find a tool to solve the differential equation". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "tools to solve the differential equation"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Scroll down</li>
+            <li>Step4: Click The link to an online tool</li>
+            <li>Step5: Click ODE calculator</li>
+            <li>Step6: Answer</li>
+          </ul>
+          <p>As the following figure shows, we ultimately arrived at a page for an ODE (Ordinary Differential Equation) calculator and obtained "Found a relevant tool" as the answer, essentially completing the task.</p>
+          <img src="./static/images/demo4.png" alt="Searching tools" width="95%">
+    
+          <!-- Knowledge Query -->
+          <h3>Knowledge Query</h3>
+          <p>The targeted task to be executed is "Search and tell me some basic info about the dark matter". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "dark matter"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click Wiki</li>
+            <li>Step4: Scroll down</li>
+            <li>Step5: Answer</li>
+          </ul>
+          <p>As the following figure shows, we ultimately reached a wiki page about dark matter, obtaining some basic info as the answer, and effectively completing the task.</p>
+          <img src="./static/images/demo5.png" alt="Knowledge Query" width="95%">
+    
+          <!-- Finding Pictures -->
+          <h3>Finding Pictures</h3>
+          <p>The targeted task to be executed is "Help find a beautiful picture of the Pacific Ocean". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "Pacific Ocean Pictures"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click A picture in the search result</li>
+            <li>Step4: Go backward</li>
+            <li>Step5: Click Another in the search result</li>
+            <li>Step6: Answer</li>
+          </ul>
+          <p>As the following picture shows, we ultimately reached a page displaying an image of the Pacific Ocean, obtaining "Found a picture of the Pacific Ocean for you" as the answer, effectively completing the task.</p>
+          <img src="./static/images/demo13.png" alt="Finding Pictures" width="95%">
+    
+          <!-- Finding Research -->
+          <h3>Finding Research</h3>
+          <p>The targeted task to be executed is "Search and tell me a hot area in AI research". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "areas in AI research"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click A Link to a page</li>
+            <li>Step4: Scroll down</li>
+            <li>Step5: Answer</li>
+          </ul>
+          <p>As shown in the figure, we ultimately reached a page about AI research, obtaining "Natural Language Processing(NLP)" as the answer, effectively completing the task.</p>
+          <img src="./static/images/demo6.png" alt="Finding Research" width="95%">
+    
+          <!-- Game Recommendation -->
+          <h3>Game Recommendation</h3>
+          <p>The targeted task to be executed is "I want to play a PC game. Help me choose one". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "PC game recommendations"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Answer</li>
+          </ul>
+          <p>As shown in the figure, we ultimately reached a page of searching results of games, obtaining a recommendation as the answer, effectively completing the task.</p>
+          <img src="./static/images/demo7.png" alt="Game Recommendation" width="95%">
+    
+          <!-- Playing Video -->
+          <h3>Playing Video</h3>
+          <p>The targeted task to be executed is "Search and tell me a hot area in AI research". The actual execution steps can be summarized as follows:</p>
+          <ul>
+            <li>Step1: Type SearchBar "funny videos"</li>
+            <li>Step2: Click SearchButton</li>
+            <li>Step3: Click A Link to a video</li>
+            <li>Step4: Answer</li>
+          </ul>
+          <p>As shown in the figure, we ultimately reached a page playing a funny video, effectively completing the task.</p>
+          <img src="./static/images/demo8.png" alt="Playing Video" width="95%">
+        </div>
+      </div>
+    </div>
+    <br>
+  </section>
+
+  <!-- <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title">Corresponding Authors</h2>
+      <div class="column is-10 is-offset-1">
+        <div class="columns has-text-centered"> -->
+          <!-- TODO -->
+          <!-- <div class="column">
+            <figure class="image is-128x128" style="margin-left: auto; margin-right: auto">
+              <a href="https://xiang-deng.github.io/">
+                <img class="is-rounded profile" src="https://xiang-deng.github.io/images/profile.jpg">
+              </a>
+              <a href="https://xiang-deng.github.io/">
+                <figcaption>Xiang Deng</figcaption>
+              </a>
+          </div>
+          <div class="column">
+            <figure class="image is-128x128" style="margin-left: auto; margin-right: auto">
+              <a href="http://web.cse.ohio-state.edu/~sun.397/">
+                <img class="is-rounded profile" src="http://web.cse.ohio-state.edu/~sun.397/huansun2018-2.png">
+              </a>
+              <a href="http://web.cse.ohio-state.edu/~sun.397/">
+                <figcaption>Huan Sun</figcaption>
+              </a>
+          </div>
+          <div class="column">
+            <figure class="image is-128x128" style="margin-left: auto; margin-right: auto">
+              <a href="https://ysu1989.github.io/">
+                <img class="is-rounded profile" src="https://ysu1989.github.io/images/avatar.jpg">
+              </a>
+              <a href="https://ysu1989.github.io/">
+                <figcaption>Yu Su</figcaption>
+              </a>
+          </div> -->
+        <!-- </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <!-- TODO -->
+        <a class="icon-link" href="https://github.com/" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              <!-- TODO -->
+              This means you are free to borrow the <a href="https://github.com/">source
+                code</a> of this website (the website is hosted on the gh-pages branch of the repository),
+              we just ask that you link back to this page in the footer.
+              The design of this website is based on <a href="https://nerfies.github.io/">NERFies</a> ,<a
+                href="https://ds1000-code-gen.github.io/" target="_blank">DS-1000</a> and <a
+                href="https://webshop-pnlp.github.io/" target="_blank">WebShop</a>. Please
+              remember to remove the analytics code included in the header of the website which you do not want on
+              your website. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
