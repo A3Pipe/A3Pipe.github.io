@@ -103,9 +103,7 @@
             <!-- TODO -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                Hanyu Lai,</span>
-              <span class="author-block">
-                Junjie Gao,</span>
+                Anonymous Author(s)</span>
             </div>
 
             <!-- <div class="is-size-5 publication-authors">
@@ -319,7 +317,10 @@
       </script>
   </section>
 
-
+  <section>
+  <p>As shown in the figure below, we gave A3Pipe specific task examples and operation tracks on Youtube, message, Google Map, and Twitter.</p>
+  <img src="./static/images/demo-android_00.png" alt="Join a community" width="95%">  
+  </section>
   <!-- <section class="section">
     <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
@@ -369,10 +370,9 @@
       </div>
   </section> -->
 
-  <section class="section">
+  <!--<section class="section">
     <div class="container is-max-widescreen">
       <div class="column is-full-width">
-        <!-- TODO -->
         <h2 class="title is-3">Introduction</h2>
         <div class="content">
           <p>
@@ -402,8 +402,9 @@
           </ul>
         </div>
         <br>
-        <!-- TODO -->
     <br>
+    <!-->
+  <section class="section">
     <div class="container is-max-widescreen">
       <h2 class="title">Framework</h2>
       <div class="column">
@@ -423,35 +424,58 @@
     <br>
     <br>
     <div class="container is-max-widescreen">
-      <h2 class="title">Data Preparation</h2>
+      <h2 class="title">Goal-Conditioned Evaluator</h2>
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
           <img src="./static/images/data_collection_00.png" alt="data" style="width:100%">
-          Considering the scarcity of high-quality, multi-step web browsing data produced by actual users, we aim to create a sizable dataset. However, the construction of this dataset presents several challenges:
-          <br>
-          <ul>
-            <li>1. Task Collection: A significant hurdle is acquiring diverse, real-user task queries across various websites.</li>
-            <li>2. Privacy and Security: Privacy and security limitations hinder the direct acquisition of user browser operation sequences. It is also challenging to rule out redundant or incorrect operations not pertinent to task completion and to confirm user task completion.</li>
-            <li>3. Objective Annotation: The labor-intensive nature of collecting user objectives for each operational step makes it impractical in real-world data-gathering scenarios.</li>
-            <li>4. Model Limitations: Current models cannot process complex user queries across different websites, thus eliminating the chance of using purely automated methods for accurate browsing trajectory collection in real and complex application contexts.</li>
-          </ul>
-          <br>
-        As illustrated in the above Figure, we suggest a hybrid human-AI Dataset Construction method to create our training data in response to these challenges.Shown as the figure above.     
-      </md-block>
+          As shown in this figure, we input the complete operation sequence,along with the final state of the device, to enhance the trajectory’s information density under the constraint of limited context length. Furthermore, for complex tasks with multiple requirements, while agents may not fully complete the tasks, portions of these trajectories are still accurate and possess significant learning value. Discarding such data means a substantial waste within our data pipeline. Therefore, we enable the evaluator to decompose tasks into multi-ple sub-goals and assess whether each sub-goal is achieved and the corresponding steps.
       </div>
     </div>
     <br>
     <br>
     <div class="container is-max-widescreen">
-      <h2 class="title">Training</h2>
-      <div class="column">
-        <md-block class="content">
-          <!-- TODO -->
-          <img src="./static/images/training.png" alt="training" style="width:100%">
-          The above figure illustrates our training process. Details can be found in the paper.
-      </md-block>
-      </div>
+      <h2 class="title">Experiments</h2>
+        <!-- Experiment 1 -->
+        <div>
+          <img src="./static/images/Exp1.png" alt="Experiment 1" width="95%">
+          <p>Experiment 1:  Per-task performance on AndroidWorld. † indicates the model is fine-tuned on train set.</p>
+        </div>
+          <!-- Experiment 2 and 3 -->
+        <div style="display: flex; justify-content: space-between;">
+          <div style="width: 48%;">
+            <img src="./static/images/Exp2.png" alt="Experiment 2" width="100%">
+            <p>Experiment 2:  Performance on various difficulty levels in Android-world. † indicates model is fine-tuned on train set.</p>
+          </div>
+          <div style="width: 48%;">
+            <img src="./static/images/Exp3.png" alt="Experiment 3" width="100%">
+            <p>Experiment 3: Performance on Popular Applications. † indicates model is fine-tuned on train set.</p>
+          </div>
+        </div>
+
+          <!-- Experiment 4 and 5 -->
+        <div style="display: flex; justify-content: space-between;">
+          <div style="width: 48%;">
+            <img src="./static/images/Exp4.png" alt="Experiment 4" width="100%">
+            <p>Experiment 4: Evaluator accuracy on AndroidWorld..</p>
+          </div>
+          <div style="width: 48%;">
+            <img src="./static/images/Exp5.png" alt="Experiment 5" width="100%">
+            <p>Experiment 5: Ablation study.</p>
+          </div>
+        </div>
+
+          <!-- Experiment 6 and 7 -->
+        <div style="display: flex; justify-content: space-between;">
+          <div style="width: 48%;">
+            <img src="./static/images/Exp6.png" alt="Experiment 6" width="100%">
+            <p>Experiment 6: Error distribution of A3Pipe in Android.</p>
+          </div>
+          <div style="width: 48%;">
+            <img src="./static/images/Exp7.png" alt="Experiment 7" width="100%">
+            <p>Experiment 7: Efficiency and cost statistics for A3Pipe, human annotation and M3A.</p>
+          </div>
+        </div>
     </div>
     <br>
     <div class="container is-max-widescreen">
@@ -574,8 +598,6 @@
           <p>As the following figure shows, we end up on the screenshot with a community. We join the large language model community, effectively completing the target task.</p>
           <img src="./static/images/demo8.png" alt="Join a community" width="95%">          
     
-
-
         </div>
       </div>
     </div>
