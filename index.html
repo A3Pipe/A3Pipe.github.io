@@ -160,25 +160,20 @@
         <div class="column highlight is-8 content">
           <span style="font-weight:bold">
             <!-- TODO -->
-            Large Language Models (LLMs) have opened up a world of pos-
-            sibilities for various NLP tasks, sparking optimism for the future.
+            Large Language Models (LLMs) have opened up a world of possibilities for various NLP tasks, sparking optimism for the future.
             Despite their potential, LLMs are not yet widely harnessed to aid
             in daily life tasks as agents on real mobile devices. One of the most
-            significant challenges is the need for high-quality data sources.
-            Even state-of-the-art models fail to perform tasks due to insuffi-
-            cient capabilities and the absence of robust data evaluation. On
-            the other hand, human annotation is often hindered by time con-
-            straints, labor intensity, and inconsistencies in user habits. Given
+            significant challenges is the need for highquality data sources.
+            Even state-of-the-art models fail to perform tasks due to insufficient capabilities and the absence of robust data evaluation. On
+            the other hand, human annotation is often hindered by time constraints, labor intensity, and inconsistencies in user habits. Given
             these challenges, we develop A3Pipe (Automated Android Agent
             Pipeline). We propose an agent algorithm comprising ExpSearch,
             Planning, and AutoCheck to enhance the capabilities of agents
-            to reason and generalize under data scarcity. Furthermore, we in-
-            troduce Goal-Conditioned Evaluator for mobile devices that can
+            to reason and generalize under data scarcity. Furthermore, we introduce Goal Conditioned Evaluator for mobile devices that can
             assess the completion of task trajectories, which is helpful for data
-            selection and augmentation. Our system achieves an 82.4% improve-
-            ment on AndroidWorld, significantly enhancing the efficiency of
+            selection and augmentation. Our system achieves an 82.4% improvement on AndroidWorld, significantly enhancing the efficiency of
             automatic data collection. Additionally, we train Llama-3-70B on
-            trajectories selected by the Goal-Conditioned Evaluator, resulting
+            trajectories selected by the Goal Conditioned Evaluator, resulting
             in a 222% enhancement, demonstrating the effectiveness of our
             data selection strategy. The data pipeline can fully automate the
             construction of Android navigation data at a low cost and time
@@ -458,18 +453,18 @@
           <img src="./static/images/main_00.png" alt="Framework" style="width:100%">
           Overview of our A3Pipe system designed to complete tasks in Android. Our process comprises three components: preliminary, task execution, and update. 
           <br>
-          Preliminary (a): We use dense retrieval to extract the top-1 similar tasks and trajectories from the database and feed them into the agent
+          Preliminary (a): We use dense retrieval to extract the top1 similar tasks and trajectories from the database and feed them into the agent
           <br>
           Task Execution (b): The agent generates or maintains a plan and creates operational instructions based on the plan and given examples. The Auto Check module verifies these instructions, executing them if successful or regenerating them if not. 
           <br>
-          Update (c): Our Goal-Conditioned Evaluator assesses the recorded trajectories and updates the database accordingly.
+          Update (c): Our Goal Conditioned Evaluator assesses the recorded trajectories and updates the database accordingly.
         </md-block>
       </div>
     </div>
     <br>
     <br>
     <div class="container is-max-widescreen">
-      <h2 class="title">Goal-Conditioned Evaluator</h2>
+      <h2 class="title">Goal Conditioned Evaluator</h2>
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
@@ -480,11 +475,8 @@
             along with the final state of the device, to enhance the trajectory’s
             information density under the constraint of limited context length.
             Furthermore, for complex tasks with multiple requirements, while
-            agents may not fully complete the tasks, portions of these trajecto-
-            ries are still accurate and possess significant learning value. Discard-
-            ing such data means a substantial waste within our data pipeline.
-            Therefore, we instruct the evaluator to decompose tasks into multi-
-            ple sub-goals and assess whether each sub-goal is achieved and the
+            agents may not fully complete the tasks, portions of these trajectories are still accurate and possess significant learning value. Discarding such data means a substantial waste within our data pipeline.
+            Therefore, we instruct the evaluator to decompose tasks into multiple subgoals and assess whether each subgoal is achieved and the
             corresponding steps.</p>
         </md-block>
       </div>
