@@ -161,30 +161,30 @@
           <span style="font-weight:bold">
             <!-- TODO -->
             Large Language Models (LLMs) have opened up a world of pos-
-sibilities for various NLP tasks, sparking optimism for the future.
-Despite their potential, LLMs are not yet widely harnessed to aid
-in daily life tasks as agents on real mobile devices. One of the most
-significant challenges is the need for high-quality data sources.
-Even state-of-the-art models fail to perform tasks due to insuffi-
-cient capabilities and the absence of robust data evaluation. On
-the other hand, human annotation is often hindered by time con-
-straints, labor intensity, and inconsistencies in user habits. Given
-these challenges, we develop A3Pipe (Automated Android Agent
-Pipeline). We propose an agent algorithm comprising ExpSearch,
-Planning, and AutoCheck to enhance the capabilities of agents
-to reason and generalize under data scarcity. Furthermore, we in-
-troduce Goal-Conditioned Evaluator for mobile devices that can
-assess the completion of task trajectories, which is helpful for data
-selection and augmentation. Our system achieves an 82.4% improve-
-ment on AndroidWorld, significantly enhancing the efficiency of
-automatic data collection. Additionally, we train Llama-3-70B on
-trajectories selected by the Goal-Conditioned Evaluator, resulting
-in a 222% enhancement, demonstrating the effectiveness of our
-data selection strategy. The data pipeline can fully automate the
-construction of Android navigation data at a low cost and time
-investment, with experiments indicating that its cost is only 5%
-compared to human annotation and efficiency 5.85 times greater.
-Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
+            sibilities for various NLP tasks, sparking optimism for the future.
+            Despite their potential, LLMs are not yet widely harnessed to aid
+            in daily life tasks as agents on real mobile devices. One of the most
+            significant challenges is the need for high-quality data sources.
+            Even state-of-the-art models fail to perform tasks due to insuffi-
+            cient capabilities and the absence of robust data evaluation. On
+            the other hand, human annotation is often hindered by time con-
+            straints, labor intensity, and inconsistencies in user habits. Given
+            these challenges, we develop A3Pipe (Automated Android Agent
+            Pipeline). We propose an agent algorithm comprising ExpSearch,
+            Planning, and AutoCheck to enhance the capabilities of agents
+            to reason and generalize under data scarcity. Furthermore, we in-
+            troduce Goal-Conditioned Evaluator for mobile devices that can
+            assess the completion of task trajectories, which is helpful for data
+            selection and augmentation. Our system achieves an 82.4% improve-
+            ment on AndroidWorld, significantly enhancing the efficiency of
+            automatic data collection. Additionally, we train Llama-3-70B on
+            trajectories selected by the Goal-Conditioned Evaluator, resulting
+            in a 222% enhancement, demonstrating the effectiveness of our
+            data selection strategy. The data pipeline can fully automate the
+            construction of Android navigation data at a low cost and time
+            investment, with experiments indicating that its cost is only 5%
+            compared to human annotation and efficiency 5.85 times greater.
+            Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
           </span>
           <br>
         </div>
@@ -310,9 +310,11 @@ Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
         </div> -->
       </div>
       <style>
-        /* 视频列和视频都要缩小到50%大小 */
+        /* 设置每列宽度为25%，以确保每行四个视频 */
         .video-column {
-            width: 50%;
+            width: 25%;
+            padding: 10px; /* 可根据需要调整间距 */
+            box-sizing: border-box; /* 确保padding不会影响总宽度 */
         }
     
         .video {
@@ -478,7 +480,8 @@ Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
-          <img src="./static/images/data_collection_00.png" alt="data" style="width:50%">
+          <div style="text-align: center;">
+            <img src="./static/images/data_collection_00.png" alt="data" style="width:50%; display: inline-block;">
           As shown in this figure, we input the complete operation sequence,
           along with the final state of the device, to enhance the trajectory’s
           information density under the constraint of limited context length.
@@ -489,6 +492,7 @@ Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
           Therefore, we instruct the evaluator to decompose tasks into multi-
           ple sub-goals and assess whether each sub-goal is achieved and the
           corresponding steps.
+          </div>
       </div>
     </div>
     <br>
