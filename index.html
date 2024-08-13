@@ -313,7 +313,7 @@
         /* 设置每列宽度为25%，以确保每行四个视频 */
         .video-column {
             width: 25%;
-            padding: 10px; /* 可根据需要调整间距 */
+            padding: 0px; /* 可根据需要调整间距 */
             box-sizing: border-box; /* 确保padding不会影响总宽度 */
         }
     
@@ -482,17 +482,18 @@
           <!-- TODO -->
           <div style="text-align: center;">
             <img src="./static/images/data_collection_00.png" alt="data" style="width:50%; display: inline-block;">
-          As shown in this figure, we input the complete operation sequence,
-          along with the final state of the device, to enhance the trajectory’s
-          information density under the constraint of limited context length.
-          Furthermore, for complex tasks with multiple requirements, while
-          agents may not fully complete the tasks, portions of these trajecto-
-          ries are still accurate and possess significant learning value. Discard-
-          ing such data means a substantial waste within our data pipeline.
-          Therefore, we instruct the evaluator to decompose tasks into multi-
-          ple sub-goals and assess whether each sub-goal is achieved and the
-          corresponding steps.
           </div>
+          <p> As shown in this figure, we input the complete operation sequence,
+            along with the final state of the device, to enhance the trajectory’s
+            information density under the constraint of limited context length.
+            Furthermore, for complex tasks with multiple requirements, while
+            agents may not fully complete the tasks, portions of these trajecto-
+            ries are still accurate and possess significant learning value. Discard-
+            ing such data means a substantial waste within our data pipeline.
+            Therefore, we instruct the evaluator to decompose tasks into multi-
+            ple sub-goals and assess whether each sub-goal is achieved and the
+            corresponding steps.</p>
+        </md-block>
       </div>
     </div>
     <br>
