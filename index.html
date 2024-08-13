@@ -160,31 +160,31 @@
         <div class="column highlight is-8 content">
           <span style="font-weight:bold">
             <!-- TODO -->
-            Large Language Models (LLMs) have propelled numerous intelli-
-            gent agent tasks, particularly in the mobile device domain, offering
-            extensive room to operate. However, LLMs have yet to be widely
-            utilized to assist people in various tasks on the real mobile device.
-            One of the most significant challenges is the need for high-quality
-            data sources. Even state-of-the-art models fail to perform tasks due
-            to insufficient capabilities and the absence of robust data selection.
-            On the other hand, human annotation is often hindered by time
-            constraints, labor intensity, and inconsistencies arising from user
-            habits. In light of these challenges, we develop A3Pipe, a novel
-            auto Android agent pipeline, which includes an agent algorithm
-            comprising ExpSearch, Planning, and Auto-Check to enhance the
-            agent's capabilities and robustness. Furthermore, we introduce a
-            goal-conditioned evaluator for mobile devices, capable of assess-
-            ing the progress in task trajectories, useful for data selection and
-            augmentation. Our system achieves a 82.4% improvement on An-
-            droidWorld, significantly enhancing the efficiency of automatic
-            data collection. Additionally, we trained Llama-3-70B on trajecto-
-            ries selected by the goal-conditioned evaluator, resulting in a 222%
-            enhancement, demonstrating the effectiveness of our data selection
-            strategy. The data pipeline can fully automate the construction of
-            Android browsing data at a low cost and time investment, with
-            experiments indicating that its cost is only 5% compared to human
-            annotation and efficiency 5.85 times greater. Demonstrations of
-            A3Pipe can be found at .
+            Large Language Models (LLMs) have opened up a world of pos-
+sibilities for various NLP tasks, sparking optimism for the future.
+Despite their potential, LLMs are not yet widely harnessed to aid
+in daily life tasks as agents on real mobile devices. One of the most
+significant challenges is the need for high-quality data sources.
+Even state-of-the-art models fail to perform tasks due to insuffi-
+cient capabilities and the absence of robust data evaluation. On
+the other hand, human annotation is often hindered by time con-
+straints, labor intensity, and inconsistencies in user habits. Given
+these challenges, we develop A3Pipe (Automated Android Agent
+Pipeline). We propose an agent algorithm comprising ExpSearch,
+Planning, and AutoCheck to enhance the capabilities of agents
+to reason and generalize under data scarcity. Furthermore, we in-
+troduce Goal-Conditioned Evaluator for mobile devices that can
+assess the completion of task trajectories, which is helpful for data
+selection and augmentation. Our system achieves an 82.4% improve-
+ment on AndroidWorld, significantly enhancing the efficiency of
+automatic data collection. Additionally, we train Llama-3-70B on
+trajectories selected by the Goal-Conditioned Evaluator, resulting
+in a 222% enhancement, demonstrating the effectiveness of our
+data selection strategy. The data pipeline can fully automate the
+construction of Android navigation data at a low cost and time
+investment, with experiments indicating that its cost is only 5%
+compared to human annotation and efficiency 5.85 times greater.
+Demonstrations of A3Pipe can be found at https://a3pipe.github.io/.
           </span>
           <br>
         </div>
@@ -193,7 +193,7 @@
       <!-- TODO -->
       <div class="column is-full-width" id="teaserVideos">
         <div class="columns is-centered is-variable is-0 is-full-width">
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
               <p>(a) Search for Cinemark Century Mountain View 16, get directions for driving and start navigation.</p>
             </div>
@@ -201,43 +201,18 @@
               <source src="./static/videos/demo1.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
-            <div class="overlay">
-              <p>(b) Search for nearby restaurants and get directions to the first one in the list.</p>
-            </div>
-            <video class="video" controls autoplay playsinline muted loop>
-              <source src="./static/videos/demo2.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
-            <div class="overlay">
-              <p>(c) Search for nearby hotel rooms which can host 4 adults and check availability of one hotel.</p>
-            </div>
-            <video class="video" controls autoplay playsinline muted loop>
-              <source src="./static/videos/demo3.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
         <div class="columns is-centered is-variable is-0">
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(d) Send a tweet post with the content "Hello World!".</p>
+              <p>(b) Send a tweet post with the content "Hello World!".</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo4.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(e) Search for the user Lebron James and follow him.</a>.</p>
-            </div>
-            <video class="video" controls autoplay playsinline muted loop>
-              <source src="./static/videos/demo5.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
-            <div class="overlay">
-              <p>(f) Enter a community page and ask to join.</p>
+              <p>(c) Enter a community page and ask to join.</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo6.mp4" type="video/mp4">
@@ -245,25 +220,41 @@
           </div>
         </div>
         <div class="columns is-centered is-variable is-0">
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(g) Search for the channel "tesla" and subscribe to the channel.</p>
+              <p>(d) Search for the channel "tesla" and subscribe to the channel.</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo7.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(h) Search for the artist Eric Clapton, enter his artist page, and play his playlist.</p>
+              <p>(e) Search for nearby restaurants and get directions to the first one in the list.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo2.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column video-column">
+            <div class="overlay">
+              <p>(f) Search for the user Lebron James and follow him.</a>.</p>
+            </div>
+            <video class="video" controls autoplay playsinline muted loop>
+              <source src="./static/videos/demo5.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="column video-column">
+            <div class="overlay">
+              <p>(g) Search for the artist Eric Clapton, enter his artist page, and play his playlist.</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo8.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(i) Search the song "Smooth Criminal" and add it to my Liked Songs playlist.</p>
+              <p>(h) Search the song "Smooth Criminal" and add it to my Liked Songs playlist.</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo9.mp4" type="video/mp4">
@@ -271,15 +262,24 @@
           </div>
         </div>
         <div class="columns is-centered is-variable is-0 is-full-width">
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
-              <p>(j) Record an audio clip and save it with name "presentation_fGwr.m4a" using Audio Recorder.</p>
+              <p>(i) Record an audio clip and save it with name "presentation_fGwr.m4a" using Audio Recorder.</p>
             </div>
             <video class="video" controls autoplay playsinline muted loop>
               <source src="./static/videos/demo10.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
+            <div class="overlay">
+                <p>(j) Search for nearby hotel rooms which can host 4 adults and check availability of one hotel.</p>
+              </div>
+              <video class="video" controls autoplay playsinline muted loop>
+                <source src="./static/videos/demo3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="column video-column">
             <div class="overlay">
               <p>(k) Take one video.</p>
               <p> </p>
@@ -288,7 +288,7 @@
               <source src="./static/videos/demo11.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
               <p>(l) Create a new contact for Hugo Pereira. Their number is +13920741751.</p>
             </div>
@@ -299,7 +299,7 @@
         </div>
         <!-- <div class="columns is-centered is-variable is-0">
           
-          <div class="column" style="position:relative; width:100%; padding:0px; font-size:0em">
+          <div class="column video-column">
             <div class="overlay">
               <p>(j) Learn about dark matter.</p>
             </div>
@@ -309,6 +309,33 @@
           </div>
         </div> -->
       </div>
+      <style>
+        /* 视频列和视频都要缩小到50%大小 */
+        .video-column {
+            width: 50%;
+        }
+    
+        .video {
+            width: 100%; /* 确保视频占满列宽 */
+            height: auto; /* 保持视频宽高比 */
+        }
+    
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    
+        .overlay p {
+            margin: 0;
+            font-size: 1em;
+        }
+      </style>
       <script>
         var video = document.getElementById("teaserVideos").getElementsByClassName("video");
         for (var i = 0; i < video.length; i++) {
@@ -338,8 +365,8 @@
       <h2 class="title">Action Trajectory</h2>
         <div class="column">
           <md-block clss="content">
-            <img src="./static/images/demo-android_00.png" alt="Join a community" width="95%">  
-            <p><strong>As shown in the figure, we gave A3Pipe specific task examples and operation tracks on Youtube, message, Google Map, and Twitter.</p></strong>
+            <img src="./static/images/demo-android (1)_00.png" alt="Join a community" width="95%">  
+            <p><strong>As shown in the figure, we gave Examples of A3Pipe’s execution on four user tasks.</p></strong>
           </md-block>
         </div>
     </div>
@@ -434,13 +461,13 @@
         <md-block class="content">
           <!-- TODO -->
           <img src="./static/images/main_00.png" alt="Framework" style="width:100%">
-          Our system comprises three components: preliminary, task execution, and update. 
+          Overview of our A3Pipe system designed to complete tasks in Android. Our process comprises three components: preliminary, task execution, and update. 
           <br>
-          Preliminary (a): We use dense retrieval to extract the top-1 similar tasks and trajectories from the database and feed them into the agent. 
+          Preliminary (a): We use dense retrieval to extract the top-1 similar tasks and trajectories from the database and feed them into the agent
           <br>
           Task Execution (b): The agent generates or maintains a plan and creates operational instructions based on the plan and given examples. The Auto Check module verifies these instructions, executing them if successful or regenerating them if not. 
           <br>
-          Update (c): Our goal-conditioned evaluator assesses the recorded trajectories and updates the database accordingly.
+          Update (c): Our Goal-Conditioned Evaluator assesses the recorded trajectories and updates the database accordingly.
         </md-block>
       </div>
     </div>
@@ -451,8 +478,17 @@
       <div class="column">
         <md-block class="content">
           <!-- TODO -->
-          <img src="./static/images/data_collection_00.png" alt="data" style="width:100%">
-          As shown in this figure, we input the complete operation sequence,along with the final state of the device, to enhance the trajectory’s information density under the constraint of limited context length. Furthermore, for complex tasks with multiple requirements, while agents may not fully complete the tasks, portions of these trajectories are still accurate and possess significant learning value. Discarding such data means a substantial waste within our data pipeline. Therefore, we enable the evaluator to decompose tasks into multi-ple sub-goals and assess whether each sub-goal is achieved and the corresponding steps.
+          <img src="./static/images/data_collection_00.png" alt="data" style="width:50%">
+          As shown in this figure, we input the complete operation sequence,
+          along with the final state of the device, to enhance the trajectory’s
+          information density under the constraint of limited context length.
+          Furthermore, for complex tasks with multiple requirements, while
+          agents may not fully complete the tasks, portions of these trajecto-
+          ries are still accurate and possess significant learning value. Discard-
+          ing such data means a substantial waste within our data pipeline.
+          Therefore, we instruct the evaluator to decompose tasks into multi-
+          ple sub-goals and assess whether each sub-goal is achieved and the
+          corresponding steps.
       </div>
     </div>
     <br>
@@ -506,16 +542,16 @@
     
           <!-- Marking Map -->
           <h3>Marking Map</h3>
-          <p>The targeted task to be executed is "Add a favorite location marker for 47.1303814, 9.5930117 in the OsmAnd maps app". The actual execution steps can be summarized as follows:</p>
+          <p>The targeted task is "Add a favorite location marker for 47.1303814, 9.5930117 in the OsmAnd maps app". The actual execution steps can be summarized as follows:</p>
           <ul>
             <li>Step1: Open app "OsmAnd" App</li>
-            <li>Step2: Click "Search" button</li>
+            <li>Step2: Click the "Search" button</li>
             <li>Step3: Type "47.1303814, 9.5930117"</li>
             <li>Step4: Click "Show on map"</li>
             <li>Step5: Long Press</li>
-            <li>Step6: Click "Add" button</li>
-            <li>Step7: Click "Add Favorite" button</li>
-            <li>Step8: Click "Save" button</li>
+            <li>Step6: Click the "Add" button</li>
+            <li>Step7: Click the "Add Favorite" button</li>
+            <li>Step8: Click the "Save" button</li>
           </ul>
           <p>As the following figure shows, we end up on the OsmAnd maps app with a location marker. We add a favorite location marker, effectively completing the target task.</p>
           <img src="./static/images/demo4.png" alt="Marking Map" width="95%">
